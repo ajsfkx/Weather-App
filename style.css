@@ -19,7 +19,7 @@ ul {
 
 h1 {
   margin-bottom: 0;
-  color: #70757a;
+  color: black;
 }
 .weather-temp strong {
   font-size: 48px;
@@ -29,4 +29,7 @@ h1 {
   position: relative;
   font-size: 16px;
   margin-top: 13px;
+}
+#description {
+  text-transform: capitalize;
 }
