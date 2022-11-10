@@ -22,7 +22,7 @@ h1 {
   color: black;
 }
 .weather-temp strong {
-  font-size: 48px;
+  font-size: 58px;
   font-weight: 200;
 }
 .units {
@@ -32,4 +32,8 @@ h1 {
 }
 #description {
   text-transform: capitalize;
+}
+
+#icon {
+  margin-top: -7px;
 }

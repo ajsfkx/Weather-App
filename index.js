@@ -18,7 +18,6 @@ function formatDate() {
 }
 
 function apiCall(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#temp");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
 
@@ -39,9 +38,15 @@ function apiCall(response) {
 
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate();
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 let apikey = "73a00877081bd43422bdee0f3022beb5";
-let city = "New York";
+let city = "Chandausi";
 let apiurl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`;
 axios.get(apiurl).then(apiCall);
