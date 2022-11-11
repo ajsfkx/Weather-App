@@ -25,6 +25,7 @@
                 type="search"
                 placeholder="Enter a city..."
                 class="form-control mb-3"
+                id="city-input"
               />
             </form>
           </div>
@@ -46,7 +47,10 @@
             <div class="d-flex weather-temp">
               <img src="#" class="float-left" id="icon" />
               <strong id="temp"></strong>
-              <small class="units">°C|<a href="#">°F</a> </small>
+              <small class="units">
+                <a href="#" id="temp-celcius" class="abc">°C </a>|
+                <a href="#" id="temp-farenheit"> °F</a>
+              </small>
             </div>
           </div>
 

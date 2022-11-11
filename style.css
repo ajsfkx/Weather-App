@@ -37,3 +37,15 @@ h1 {
 #icon {
   margin-top: -7px;
 }
+.weather-temp .abc {
+  color: black;
+  text-decoration: none;
+}
+
+#temp-celcius {
+  text-decoration: none;
+}
+
+#temp-farenheit {
+  text-decoration: none;
+}
