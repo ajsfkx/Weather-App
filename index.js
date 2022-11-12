@@ -17,6 +17,14 @@ function formatDate() {
   return `Last Updated: ${currentDay} ${hours}:${minutes}`;
 }
 
+function getForecast(coordinates) {
+  let apikey = "73a00877081bd43422bdee0f3022beb5";
+
+  let apiurl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apikey}&units=metric`;
+
+  axios.get(apiurl).then(displayForecast);
+}
+
 function apiCall(response) {
   let temperatureElement = document.querySelector("#temp");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -46,6 +54,47 @@ function apiCall(response) {
   );
 
   celciusTemperature = response.data.main.temp;
+
+  getForecast(response.data.coord);
+}
+
+function forecastDate(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 7) {
+      forecastHTML =
+        forecastHTML +
+        `
+    <div class="col">
+    ${forecastDate(forecastDay.dt)}
+    <img
+      src="http://openweathermap.org/img/wn/01n@2x.png"
+      width="60"
+      class="forecast-image"
+    />
+    <span class="weather-forecast-max">${Math.round(
+      forecastDay.temp.max
+    )}°</span>
+    <span class="weather-forecast-min">${Math.round(
+      forecastDay.temp.min
+    )}°</span>
+  </div>
+  `;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 function search(city) {
